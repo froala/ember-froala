@@ -132,12 +132,12 @@ export default Ember.Component.extend({
     params: {},
     value: null,
 
-    initializeEditor: function() {
-        var froala = this.$().editable(params);
+    didInsertElement: function() {
+        var froala = this.$().editable(this.get('params'));
         this.$().editable('setHTML', this.get('value') || '', false);
         this.$().on('editable.blur', Ember.$.proxy(this.onFocusOut, this));
         this.set('_froala', froala);
-    }.on('didInsertElement'),
+    },
 
     onFocusOut: function() {
         if (!this.get('allowBlank')) {

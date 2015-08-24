@@ -13,7 +13,7 @@ export default Ember.Component.extend({
     allowBlank: true,
 
     getConfig: function() {
-        var appConfig = this.container.lookup('config:environment');
+        var appConfig = this.container.lookupFactory('config:environment');
         return appConfig && appConfig.get('froala-editor') || {};
     },
 

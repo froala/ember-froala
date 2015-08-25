@@ -1,6 +1,6 @@
 {
   "name": "ember-froala",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Ember Addon for Forala WYSIWYG Editor",
   "directories": {
     "doc": "doc",
@@ -11,7 +11,7 @@
     "build": "ember build",
     "test": "ember try:testall"
   },
-  "repository": "https://github.com/ajackus/ember-froala",
+  "repository": "https://github.com/froala/ember-froala",
   "engines": {
     "node": ">= 0.10.0"
   },

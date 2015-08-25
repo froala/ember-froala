@@ -26,7 +26,7 @@ export default Ember.Controller.extend({
             allowHTML: true,
             autosave: true,
             autosaveInterval: 10000,
-            // For more params refer [this](https://www.froala.com/wysiwyg-editor/docs/options)
+            // For more params refer: 'https://www.froala.com/wysiwyg-editor/docs/options'
         },
 
         events: {
@@ -35,7 +35,7 @@ export default Ember.Controller.extend({
             'contentChanged': function() { return alert('contentChanged'); },
             'align': function() { return alert('aligned'); },
             'afterPaste': function() { return alert('content pasted'); }
-            // For more events [this](https://www.froala.com/wysiwyg-editor/docs/events)
+            // For more events: 'https://www.froala.com/wysiwyg-editor/docs/events'
         }
     }
     

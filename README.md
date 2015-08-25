@@ -45,3 +45,10 @@ export default Ember.Controller.extend({
 * Template example
 
 `{{froala-editor params=froalaEditor.params value=value events=froalaEditor.events}}`
+
+## License
+
+The `ember-froala` project is under MIT license.
+
+Froala Editor has [3 different licenses](http://froala.com/wysiwyg-editor/pricing) for commercial use.
+For details please see [License Agreement](http://froala.com/wysiwyg-editor/terms).

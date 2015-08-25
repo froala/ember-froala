@@ -13,6 +13,7 @@
     "qunit": "~1.17.1"
   },
   "devDependencies": {
-    "FroalaWysiwygEditor": "~1.2.8"
+    "FroalaWysiwygEditor": "~1.2.8",
+    "font-awesome": "4.3.0"
   }
 }

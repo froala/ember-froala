@@ -140,8 +140,8 @@ export default Ember.Component.extend({
     },
 
     onFocusOut: function() {
-        if (!this.get('allowBlank')) {
-            var text = this.get('allowHTML') ? this.$().editable('getHTML', true, true) : this.$().editable('getText');
+        if (!this.get('params.allowBlank')) {
+            var text = this.get('params.allowHTML') ? this.$().editable('getHTML', true, true) : this.$().editable('getText');
 
             if (text && text.trim().length > 0) {
                 this.set('value', text); 
@@ -149,7 +149,7 @@ export default Ember.Component.extend({
                 this.$().editable('setHTML', this.get('value'));
             }
         } else {
-            if (this.get('allowHTML')) {
+            if (this.get('params.allowHTML')) {
                 this.set('value', this.$().editable('getHTML', true, true)); 
             } else {
                 this.set('value', this.$().editable('getText')); 

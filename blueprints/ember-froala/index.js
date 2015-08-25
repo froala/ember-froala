@@ -2,7 +2,12 @@ module.exports = {
   description: '',
   normalizeEntityName: function() {},
   afterInstall: function(options) {
-    return this.addBowerPackageToProject('FroalaWysiwygEditor'); // is a promise
+    var that = this;
+
+    return this.addBowerPackageToProject('FroalaWysiwygEditor').then(function() {
+      return that.addBowerPackageToProject('font-awesome');
+    });
+    
   }
 
   // locals: function(options) {

@@ -46,6 +46,25 @@ export default Ember.Controller.extend({
 
 `{{froala-editor params=froalaEditor.params value=value events=froalaEditor.events}}`
 
+* Including a plugin example:
+
+Include the plugin in your ember-cli-build.js
+
+```
+/* global require, module */
+var EmberApp = require('ember-cli/lib/broccoli/ember-app');
+
+module.exports = function(defaults) {
+  var app = new EmberApp(defaults, {
+    // Add options here
+  });
+  //include the lists plugin
+  app.import('bower_components/FroalaWysiwygEditor/js/plugins/lists.min.js');
+
+  return app.toTree();
+};
+```
+
 ## License
 
 The `ember-froala` project is under MIT license.

@@ -12,39 +12,51 @@ Ember component for FroalaWysiwygEditor
 See [demo app source](https://github.com/ajackus/ember-froala/tree/master/tests/dummy/app) for example usage.
 
 * Controller example
-```
+```javascript
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+  value: 'test',
 
-    value: 'test',
+  froalaEditor: {
+    params: {
+      inlineMode: true,
+      placeholder: 'Enter..',
+      allowHTML: true,
+      autosave: true,
+      autosaveInterval: 10000,
+        // For more params refer: 'https://www.froala.com/wysiwyg-editor/docs/options'
+    },
+  },
 
-    froalaEditor: {
-        params: {
-            inlineMode: true,
-            placeholder: 'Enter..',
-            allowHTML: true,
-            autosave: true,
-            autosaveInterval: 10000,
-            // For more params refer: 'https://www.froala.com/wysiwyg-editor/docs/options'
-        },
-
-        events: {
-            'blur' : function() { return alert('focusOut'); },
-            'focus' : function() { return alert('focused'); },
-            'contentChanged': function() { return alert('contentChanged'); },
-            'align': function() { return alert('aligned'); },
-            'afterPaste': function() { return alert('content pasted'); }
-            // For more events: 'https://www.froala.com/wysiwyg-editor/docs/events'
-        }
-    }
-    
+  actions: {
+    contentChanged: function(event, editor) {
+      console.log("Content Changed");
+      console.log(event);
+      console.log(editor);
+    },
+    focus: function(event, editor) {
+      console.log("Focus");
+      console.log(event);
+      console.log(editor);
+    },
+  },
 });
 ```
 
 * Template example
 
-`{{froala-editor params=froalaEditor.params value=value events=froalaEditor.events}}`
+```hbs
+{{froala-editor params=froalaEditor.params value=value focus=(action "focus") contentChanged=(action "contentChanged")}}
+```
+
+### Please Note:
+The `value` is only for the initial value of the field.
+It will not be updated when the user changes the text.
+If the underlying value changes while the component is active, the editor will not reflect the change.
+In order to get the values that the user changes, you will need to listen to the
+`contentChanged` action.
+
 
 * Including a plugin example:
 

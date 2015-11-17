@@ -10,102 +10,72 @@ export default Ember.Component.extend({
     params: {},
     value: null,
     eventNames: [
-      'afterFileUpload',
-      'afterImageUpload',
-      'afterPaste',
-      'afterPasteCleanup',
-      'afterRemoveImage',
-      'afterSave',
-      'afterUploadPastedImage',
-      'align',
-      'backColor',
-      'badLink',
-      'beforeDeleteImage',
-      'beforeFileUpload',
-      'beforeImageUpload',
-      'beforePaste',
-      'beforeRemoveImage',
-      'beforeSave',
-      'beforeUploadPastedImage',
-      'blur',
-      'bold',
-      'cellDeleted',
-      'cellHorizontalSplit',
-      'cellInsertedAfter',
-      'cellInsertedBefore',
-      'cellVerticalSplit',
-      'cellsMerged',
-      'columnDeleted',
-      'columnInsertedAfter',
-      'columnInsertedBefore',
-      'contentChanged',
-      'fileError',
-      'fileUploaded',
-      'focus',
-      'fontFamily',
-      'fontSize',
-      'foreColor',
-      'formatBlock',
-      'getHTML',
-      'htmlHide',
-      'htmlShow',
-      'imageAltSet',
-      'imageDeleteError',
-      'imageDeleteSuccess',
-      'imageError',
-      'imageFloatedLeft',
-      'imageFloatedNone',
-      'imageFloatedRight',
-      'imageInserted',
-      'imageLinkInserted',
-      'imageLinkRemoved',
-      'imageLoaded',
-      'imageReplaced',
-      'imageResize',
-      'imageResizeEnd',
-      'imagesLoaded',
-      'imagesLoadError',
-      'indent',
-      'initialized',
-      'italic',
-      'linkInserted',
-      'linkRemoved',
-      'maxCharNumberExceeded',
-      'onPaste',
-      'orderedListInserted',
-      'outdent',
-      'redo',
-      'rowDeleted',
-      'rowInsertedAbove',
-      'rowInsertedBelow',
-      'saveError',
-      'selectAll',
-      'strikeThrough',
-      'subscript',
-      'superscript',
-      'tableDeleted',
-      'tableInserted',
-      'underline',
-      'undo',
-      'unorderedListInserted',
-      'videoError',
-      'videoFloatedLeft',
-      'videoFloatedNone',
-      'videoFloatedRight',
-      'videoInserted',
-      'videoRemoved',
+      'blur'
+      'buttons.refresh'
+      'charCounter.exceeded'
+      'charCounter.update'
+      'commands.after'
+      'commands.before'
+      'contentChanged'
+      'destroy'
+      'file.beforeUpload'
+      'file.inserted'
+      'file.unlink'
+      'file.uploaded'
+      'file.uploadedToS3'
+      'focus'
+      'html.afterGet'
+      'html.beforeGet'
+      'html.get'
+      'html.set'
+      'image.beforePasteUpload'
+      'image.beforeRemove'
+      'image.beforeUpload'
+      'image.error'
+      'image.inserted'
+      'image.loaded'
+      'image.removed'
+      'image.replaced'
+      'image.resize'
+      'image.resizeEnd'
+      'image.uploaded'
+      'image.uploadedToS3'
+      'imageManager.beforeDeleteImage'
+      'imageManager.error'
+      'imageManager.imageDeleted'
+      'imageManager.imageLoaded'
+      'imageManager.imagesLoaded'
+      'initialized'
+      'link.bad'
+      'paste.after'
+      'paste.afterCleanup'
+      'paste.before'
+      'paste.beforeCleanup'
+      'popups.hide.[id]'
+      'save.after'
+      'save.before'
+      'save.error'
+      'snapshot.after'
+      'snapshot.before'
+      'toolbar.hide'
+      'toolbar.show'
+      'video.codeError'
+      'video.inserted'
+      'video.linkError'
+      'video.removed'
+      'video.beforeRemove'
     ],
 
     didInsertElement: function() {
-        var froala = this.$().editable(this.get('params')),
+        var froala = this.$().froalaEditor(this.get('params')),
             events = this.get('eventNames');
 
         const froalaElement = this.$();
-        froalaElement.editable('setHTML', this.get('value') || '', false);
+        froalaElement.froalaEditor('html.set', this.get('value') || '', false);
 
         events.forEach((key) => {
           if(this.attrs[key]) {
-            froalaElement.on('editable.'+key, proxy(this.handleFroalaEvent, this));
+            froalaElement.on('froalaEditor.' + key, proxy(this.handleFroalaEvent, this));
           }
         });
 
@@ -124,7 +94,7 @@ export default Ember.Component.extend({
 
     willDestroyElement: function() {
         if (this.get('_froala')) {
-            this.$().editable('destroy');
+            this.$().froalaEditor('destroy');
         }
     }
 });

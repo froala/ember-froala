@@ -4,10 +4,10 @@ module.exports = {
   afterInstall: function(options) {
     var that = this;
 
-    return this.addBowerPackageToProject('FroalaWysiwygEditor').then(function() {
+    return this.addBowerPackageToProject('froala-wysiwyg-editor').then(function() {
       return that.addBowerPackageToProject('font-awesome');
     });
-    
+
   }
 
   // locals: function(options) {

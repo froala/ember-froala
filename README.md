@@ -20,11 +20,8 @@ export default Ember.Controller.extend({
 
   froalaEditor: {
     params: {
-      inlineMode: true,
-      placeholder: 'Enter..',
-      allowHTML: true,
-      autosave: true,
-      autosaveInterval: 10000,
+      toolbarInline: true,
+      placeholderText: 'Enter..'
         // For more params refer: 'https://www.froala.com/wysiwyg-editor/docs/options'
     },
   },
@@ -79,7 +76,7 @@ module.exports = function(defaults) {
 
 ## License
 
-The `ember-froala` project is under MIT license.
+The `ember-froala` project is under MIT license. However, in order to use Froala WYSIWYG HTML Editor plugin you should purchase a license for it.
 
 Froala Editor has [3 different licenses](http://froala.com/wysiwyg-editor/pricing) for commercial use.
 For details please see [License Agreement](http://froala.com/wysiwyg-editor/terms).

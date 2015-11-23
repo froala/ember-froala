@@ -15,9 +15,16 @@
   "engines": {
     "node": ">= 0.10.0"
   },
-  "contributors": {
-    "Stefan Neculai <stefan@froala.com>"
-  },
+  "contributors": [{
+    "name": "Stefan Neculai",
+    "email": "stefan@froala.com"
+  }, {
+    "name": "Maulik Bengali",
+    "email": "maulik@ajackus.com"
+  }, {
+    "name": "Jignesh Chudasma",
+    "email": "jignesh@ajackus.com"
+  }],
   "homepage": "https://www.froala.com/wysiwyg-editor",
   "author": "AJACKUS",
   "license": "MIT",

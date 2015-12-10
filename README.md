@@ -27,6 +27,7 @@ export default Ember.Controller.extend({
   },
 
   actions: {
+  // For more events refer: 'https://www.froala.com/wysiwyg-editor/docs/events'
     contentChanged: function(event, editor) {
       console.log("Content Changed");
       console.log(event);
@@ -46,7 +47,63 @@ export default Ember.Controller.extend({
 ```hbs
 {{froala-editor params=froalaEditor.params value=value focus=(action "focus") contentChanged=(action "contentChanged")}}
 ```
+**Mapping nested events**
+Nested events use camel case to trigger their respective Froala events.
 
+ - Nested Event example for image.uploaded 
+   (https://www.froala.com/wysiwyg-editor/docs/events#image.uploaded)
+```hbs
+{{froala-editor params=froalaEditor.params imageUploaded=(action "imageUploaded")}}
+```
+
+ - Nested Event example for imageManager.beforeDeleteImage
+   (https://www.froala.com/wysiwyg-editor/docs/events#imageManager.beforeDeleteImage)
+```hbs
+{{froala-editor params=froalaEditor.params imageManagerBeforeDeleteImage=(action "imageManagerBeforeDeleteImage")}}
+```
+### Concepts:
+**Save button**
+
+ - Template Example
+
+```hbs
+{{froala-editor params=froalaEditor.params value=value focus=(action "focus") contentChanged=(action "contentChanged")}}
+<button {{action 'save'}}>Save</button>
+```
+* Controller example
+```javascript
+import Ember from 'ember';
+
+export default Ember.Controller.extend({
+  value: 'test',
+
+  froalaEditor: {
+    params: {
+      toolbarInline: true,
+      placeholderText: 'Enter..'
+        // For more params refer: 'https://www.froala.com/wysiwyg-editor/docs/options'
+    },
+  },
+
+  actions: {
+  // For more events refer: 'https://www.froala.com/wysiwyg-editor/docs/events'
+	save: function(){
+		console.log("Content Saved");
+		$('.froalaEditor').froalaEditor('save.save');
+	},
+    contentChanged: function(event, editor) {
+      console.log("Content Changed");
+      console.log(event);
+      console.log(editor);
+    },
+    focus: function(event, editor) {
+      console.log("Focus");
+      console.log(event);
+      console.log(editor);
+    },
+  },
+});
+```
 ### Please Note:
 The `value` is only for the initial value of the field.
 It will not be updated when the user changes the text.

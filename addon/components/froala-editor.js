@@ -4,7 +4,7 @@ const { isFunction, proxy } = Ember.$;
 
 export default Ember.Component.extend({
     layout: layout,
-
+    classNames: ['froalaEditor'],
     tagName: 'div',
     _froala: null,
     params: {},

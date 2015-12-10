@@ -10,60 +10,60 @@ export default Ember.Component.extend({
     params: {},
     value: null,
     eventNames: [
-      'blur',
-      'buttons.refresh',
-      'charCounter.exceeded',
-      'charCounter.update',
-      'commands.after',
-      'commands.before',
-      'contentChanged',
-      'destroy',
-      'file.beforeUpload',
-      'file.inserted',
-      'file.unlink',
-      'file.uploaded',
-      'file.uploadedToS3',
-      'focus',
-      'html.afterGet',
-      'html.beforeGet',
-      'html.get',
-      'html.set',
-      'image.beforePasteUpload',
-      'image.beforeRemove',
-      'image.beforeUpload',
-      'image.error',
-      'image.inserted',
-      'image.loaded',
-      'image.removed',
-      'image.replaced',
-      'image.resize',
-      'image.resizeEnd',
-      'image.uploaded',
-      'image.uploadedToS3',
-      'imageManager.beforeDeleteImage',
-      'imageManager.error',
-      'imageManager.imageDeleted',
-      'imageManager.imageLoaded',
-      'imageManager.imagesLoaded',
-      'initialized',
-      'link.bad',
-      'paste.after',
-      'paste.afterCleanup',
-      'paste.before',
-      'paste.beforeCleanup',
-      'popups.hide.[id]',
-      'save.after',
-      'save.before',
-      'save.error',
-      'snapshot.after',
-      'snapshot.before',
-      'toolbar.hide',
-      'toolbar.show',
-      'video.codeError',
-      'video.inserted',
-      'video.linkError',
-      'video.removed',
-      'video.beforeRemove'
+      {'blur':'blur'},
+      {'buttonsRefresh':'buttons.refresh'},
+      {'charCounterExceeded':'charCounter.exceeded'},
+      {'charCounterUpdate':'charCounter.update'},
+      {'commandsAfter':'commands.after'},
+      {'commandsBefore':'commands.before'},
+      {'contentChanged':'contentChanged'},
+      {'destroy':'destroy'},
+      {'fileBeforeUpload':'file.beforeUpload'},
+      {'fileInserted':'file.inserted'},
+      {'fileUnlink':'file.unlink'},
+      {'fileUploaded':'file.uploaded'},
+      {'fileUploadedToS3':'file.uploadedToS3'},
+      {'focus':'focus'},
+      {'htmlAfterGet':'html.afterGet'},
+      {'htmlBeforeGet':'html.beforeGet'},
+      {'htmlGet':'html.get'},
+      {'htmlSet':'html.set'},
+      {'imageBeforePasteUpload':'image.beforePasteUpload'},
+      {'imageBeforeRemove':'image.beforeRemove'},
+      {'imageBeforeUpload':'image.beforeUpload'},
+      {'imageError':'image.error'},
+      {'imageInserted':'image.inserted'},
+      {'imageLoaded':'image.loaded'},
+      {'imageRemoved':'image.removed'},
+      {'imageReplaced':'image.replaced'},
+      {'imageResize':'image.resize'},
+      {'imageResizeEnd':'image.resizeEnd'},
+      {'imageUploaded':'image.uploaded'},
+      {'imageUploadedToS3':'image.uploadedToS3'},
+      {'imageManagerBeforeDeleteImage':'imageManager.beforeDeleteImage'},
+      {'imageManagerError':'imageManager.error'},
+      {'imageManagerImageDeleted':'imageManager.imageDeleted'},
+      {'imageManagerImageLoaded':'imageManager.imageLoaded'},
+      {'imageManagerImagesLoaded':'imageManager.imagesLoaded'},
+      {'initialized':'initialized'},
+      {'linkBad':'link.bad'},
+      {'pasteAfter':'paste.after'},
+      {'pasteAfterCleanup':'paste.afterCleanup'},
+      {'pasteBefore':'paste.before'},
+      {'pasteBeforeCleanup':'paste.beforeCleanup'},
+      {'popupsHide_[key]':'popups.hide.[id]'},//need to be a dynamic property
+      {'saveAfter':'save.after'},
+      {'saveBefore':'save.before'},
+      {'saveError':'save.error'},
+      {'snapshotAfter':'snapshot.after'},
+      {'snapshotBefore':'snapshot.before'},
+      {'toolbarHide':'toolbar.hide'},
+      {'toolbarShow':'toolbar.show'},
+      {'videoCodeError':'video.codeError'},
+      {'videoInserted':'video.inserted'},
+      {'videoLinkError':'video.linkError'},
+      {'videoRemoved':'video.removed'},
+      {'videoBeforeRemove':'video.beforeRemove'}
     ],
 
     didInsertElement: function() {
@@ -74,8 +74,10 @@ export default Ember.Component.extend({
         froalaElement.froalaEditor('html.set', this.get('value') || '', false);
 
         events.forEach((key) => {
-          if(this.attrs[key]) {
-            froalaElement.on('froalaEditor.' + key, proxy(this.handleFroalaEvent, this));
+          for(var option in key){
+            if(this.attrs[option]) {
+              froalaElement.on('froalaEditor.' + key[option], proxy(this.handleFroalaEvent, this));
+            }
           }
         });
 
@@ -83,13 +85,22 @@ export default Ember.Component.extend({
     },
 
     handleFroalaEvent: function(event, editor) {
+      var events = this.get('eventNames');
       const eventName = event.namespace;
-      const actionHandler = this.attrs[eventName];
-      if(isFunction(actionHandler)) {
-        actionHandler(event, editor);
-      } else {
-        this.sendAction(eventName, event, editor);
-      }
+      events.forEach((key) => {
+        for(var option in key){
+          if(this.attrs[option]) {
+            if(eventName===key[option]){
+              const actionHandler = this.attrs[option];
+              if(isFunction(actionHandler)) {
+                actionHandler(event, editor);
+              } else {
+                this.sendAction(option, event, editor);
+              }
+            }
+          }
+        }
+      });
     },
 
     willDestroyElement: function() {

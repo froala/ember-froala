@@ -53,13 +53,13 @@ Nested events use camel case to trigger their respective Froala events.
  - Nested Event example for image.uploaded 
    (https://www.froala.com/wysiwyg-editor/docs/events#image.uploaded)
 ```hbs
-{{froala-editor params=froalaEditor.params imageUploaded=(action "imageUploaded")}}
+{{froala-editor params=froalaEditor.params image_uploaded=(action "image_uploaded")}}
 ```
 
  - Nested Event example for imageManager.beforeDeleteImage
    (https://www.froala.com/wysiwyg-editor/docs/events#imageManager.beforeDeleteImage)
 ```hbs
-{{froala-editor params=froalaEditor.params imageManagerBeforeDeleteImage=(action "imageManagerBeforeDeleteImage")}}
+{{froala-editor params=froalaEditor.params imageManager_beforeDeleteImage=(action "imageManager_beforeDeleteImage")}}
 ```
 ### Concepts:
 **Save button**

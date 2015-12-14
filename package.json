@@ -1,6 +1,6 @@
 {
   "name": "ember-froala",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "Ember Addon for Froala WYSIWYG HTML rich text editor.",
   "directories": {
     "doc": "doc",

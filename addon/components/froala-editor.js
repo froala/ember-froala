@@ -23,6 +23,7 @@ export default Ember.Component.extend({
         }
         this.set('_froala', froala);
     },
+    
     handleFroalaEvent: function(key,event, editor,x,y,z) {
       const eventName = event.namespace;
       const reverseEventName = key.replace(/\./g,"_");

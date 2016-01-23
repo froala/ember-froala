@@ -1,0 +1,97 @@
+{
+  "name": "ember-froala",
+  "version": "2.0.6",
+  "description": "Ember Addon for Froala WYSIWYG HTML rich text editor.",
+  "directories": {
+    "doc": "doc",
+    "test": "tests"
+  },
+  "scripts": {
+    "start": "ember server",
+    "build": "ember build",
+    "test": "ember try:testall"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/froala/ember-froala.git"
+  },
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "contributors": [
+    {
+      "name": "Stefan Neculai",
+      "email": "stefan@froala.com"
+    },
+    {
+      "name": "Maulik Bengali",
+      "email": "maulik@ajackus.com"
+    },
+    {
+      "name": "Jignesh Chudasma",
+      "email": "jignesh@ajackus.com"
+    }
+  ],
+  "homepage": "https://www.froala.com/wysiwyg-editor",
+  "author": {
+    "name": "AJACKUS"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "broccoli-asset-rev": "^2.0.2",
+    "ember-cli": "1.13.1",
+    "ember-cli-app-version": "0.4.0",
+    "ember-cli-content-security-policy": "0.4.0",
+    "ember-cli-dependency-checker": "^1.0.0",
+    "ember-cli-htmlbars": "0.7.9",
+    "ember-cli-htmlbars-inline-precompile": "^0.1.1",
+    "ember-cli-ic-ajax": "0.2.1",
+    "ember-cli-inject-live-reload": "^1.3.0",
+    "ember-cli-qunit": "0.3.15",
+    "ember-cli-release": "0.2.3",
+    "ember-cli-uglify": "^1.0.1",
+    "ember-disable-proxy-controllers": "^1.0.0",
+    "ember-export-application-global": "^1.0.2",
+    "ember-disable-prototype-extensions": "^1.0.0",
+    "ember-try": "0.0.6"
+  },
+  "keywords": [
+    "ember-addon"
+  ],
+  "dependencies": {
+    "ember-cli-babel": "^5.1.3",
+    "ember-cli-htmlbars": "1.0.1"
+  },
+  "ember-addon": {
+    "configPath": "tests/dummy/config"
+  },
+  "gitHead": "780c85ae713bcd0fd1763fcb1af99c10c61e8688",
+  "bugs": {
+    "url": "https://github.com/froala/ember-froala/issues"
+  },
+  "_id": "ember-froala@2.0.1",
+  "_shasum": "106ded46cf72c900d5089bf33afc866100627314",
+  "_from": "ember-froala@*",
+  "_npmVersion": "2.9.1",
+  "_nodeVersion": "0.12.3",
+  "_npmUser": {
+    "name": "ajackus",
+    "email": "developer@ajackus.com"
+  },
+  "dist": {
+    "shasum": "106ded46cf72c900d5089bf33afc866100627314",
+    "tarball": "http://registry.npmjs.org/ember-froala/-/ember-froala-2.0.1.tgz"
+  },
+  "maintainers": [
+    {
+      "name": "ajackus",
+      "email": "developer@ajackus.com"
+    },
+    {
+      "name": "froala",
+      "email": "stefan@froala.com"
+    }
+  ],
+  "_resolved": "https://registry.npmjs.org/ember-froala/-/ember-froala-2.0.1.tgz",
+  "readme": "ERROR: No README data found!"
+}

@@ -1,6 +1,6 @@
 {
   "name": "ember-froala",
-  "version": "2.0.5",
+  "version": "2.0.6",
   "description": "Ember Addon for Froala WYSIWYG HTML rich text editor.",
   "directories": {
     "doc": "doc",
@@ -50,8 +50,8 @@
     "ember-addon"
   ],
   "dependencies": {
-    "ember-cli-babel": "^5.0.0",
-    "ember-cli-htmlbars": "0.7.9"
+    "ember-cli-babel": "^5.1.3",
+    "ember-cli-htmlbars": "1.0.1"
   },
   "ember-addon": {
     "configPath": "tests/dummy/config"

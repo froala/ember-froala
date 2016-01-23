@@ -17,9 +17,6 @@ module.exports = {
     app.import(app.bowerDirectory + '/froala-wysiwyg-editor/js/froala_editor.min.js');
     var options = extend(defaultOptions, app.options['emberFroala']);
     var validCSSPlugins = ['char_counter','code_view', 'colors', 'emoticons', 'file', 'fullscreen', 'image_manager', 'image', 'line_breaker', 'table', 'video'];
-    if(options.align){
-    	app.import(app.bowerDirectory + '/froala-wysiwyg-editor/js/plugins/align.min.js');
-    }
     //IMPORTING FONT AWESOME
     if(options.fontAwesome){
     	app.import(app.bowerDirectory + '/font-awesome/css/font-awesome.css');

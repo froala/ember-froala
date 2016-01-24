@@ -71,11 +71,11 @@ Nested events use camel case to trigger their respective Froala events.
 {{froala-editor params=froalaEditor.params value=value focus=(action "focus") contentChanged=(action "contentChanged")}}
 <button {{action 'save'}}>Save</button>
 ```
-* Controller example
+* Component example
 ```javascript
 import Ember from 'ember';
 
-export default Ember.Controller.extend({
+export default Ember.Component.extend({
   value: 'test',
 
   froalaEditor: {
@@ -116,7 +116,7 @@ export default Ember.Controller.extend({
 ```javascript
 import Ember from 'ember';
 
-export default Ember.Controller.extend({
+export default Ember.Component.extend({
   value: 'test',
 
   froalaEditor: {

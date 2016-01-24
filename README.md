@@ -204,6 +204,26 @@ var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 module.exports = function(defaults) {
   var app = new EmberApp(defaults, {
     // Add options here
+     emberFroala: {
+      fontAwesome: true,
+      theme: 'gray',
+      lang: 'en_us',
+      plugins: [
+        'block_styles',
+        'char_counter', 
+        'colors', 'entities',
+        'file_upload',
+        'font_family',
+        'font_size',
+        'fullscreen',
+        'inline_styles',
+        'lists',
+        'media_manager',
+        'tables',
+        'urls',
+        'video'
+      ]
+    }
   });
   //include the lists plugin
   app.import('bower_components/FroalaWysiwygEditor/js/plugins/lists.min.js');

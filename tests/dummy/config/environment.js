@@ -20,14 +20,14 @@ module.exports = function(environment) {
     }
   }
   ENV.contentSecurityPolicy = {
-    'default-src': "*",
-    'script-src': "*", // Allow scripts from https://cdn.mxpnl.com
-    'font-src': "*", // Allow fonts to be loaded from http://fonts.gstatic.com
-    'connect-src': "*", // Allow data (ajax/websocket) from api.mixpanel.com and custom-api.local
-    'img-src': "*",
-    'style-src': "*", // Allow inline styles and loaded CSS from http://fonts.googleapis.com 
-    'media-src': "*",
-    'frame-src':"*"
+    'default-src': "'self' 'unsafe-eval'  'unsafe-inline' *",
+    'script-src': " 'self' 'unsafe-eval'  'unsafe-inline'*", // Allow scripts from https://cdn.mxpnl.com
+    'font-src': "'self' 'unsafe-eval'  'unsafe-inline' *", // Allow fonts to be loaded from http://fonts.gstatic.com
+    'connect-src': "'self' 'unsafe-eval'  'unsafe-inline' *", // Allow data (ajax/websocket) from api.mixpanel.com and custom-api.local
+    'img-src': "'self' 'unsafe-eval'  'unsafe-inline' *",
+    'style-src': "'self' 'unsafe-eval'  'unsafe-inline' *", // Allow inline styles and loaded CSS from http://fonts.googleapis.com 
+    'media-src': "'self' 'unsafe-eval'  'unsafe-inline' *",
+    'frame-src':"'self' 'unsafe-eval'  'unsafe-inline' *"
   };
   if (environment === 'test') {
     ENV.baseURL = '/';

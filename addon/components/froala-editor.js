@@ -9,11 +9,13 @@ export default Ember.Component.extend({
     _froala: null,
     params: {},
     didInsertElement: function() {
+        var buttons = this.get('customButtons');
+        buttons();
         var froala = this.$().froalaEditor(this.get('params'));
         const froalaElement = this.$();
         froalaElement.froalaEditor('html.set', this.get('value') || '', false);
         for(var prop in this.attrs){
-          if(prop !='params') {
+          if(prop !=='params') {
             var key = prop.replace(/_/g,".");           
             froalaElement.on('froalaEditor.' + key, proxy(this.handleFroalaEvent, this,key));
           }

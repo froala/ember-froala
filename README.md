@@ -1,6 +1,7 @@
 # Ember-froala
 
-Ember component for FroalaWysiwygEditor
+Ember component for FroalaWysiwygEditor.
+Fully customizable wysiwyg editor for emberjs. Create a new buttons and intergrate into your ember application. Post images images and html to your own server. 
 
 ## Installation
 
@@ -11,11 +12,11 @@ Ember component for FroalaWysiwygEditor
 
 See [demo app source](https://github.com/ajackus/ember-froala/tree/master/tests/dummy/app) for example usage.
 
-* Controller example
+* Component example
 ```javascript
 import Ember from 'ember';
 
-export default Ember.Controller.extend({
+export default Ember.Component.extend({
   value: 'test',
 
   froalaEditor: {
@@ -48,7 +49,7 @@ export default Ember.Controller.extend({
 {{froala-editor params=froalaEditor.params value=value focus=(action "focus") contentChanged=(action "contentChanged")}}
 ```
 **Mapping nested events**
-Nested events use camel case to trigger their respective Froala events.
+Nested events use underscores to trigger their respective Froala events.
 
  - Nested Event example for image.uploaded 
    (https://www.froala.com/wysiwyg-editor/docs/events#image.uploaded)
@@ -70,11 +71,11 @@ Nested events use camel case to trigger their respective Froala events.
 {{froala-editor params=froalaEditor.params value=value focus=(action "focus") contentChanged=(action "contentChanged")}}
 <button {{action 'save'}}>Save</button>
 ```
-* Controller example
+* Component example
 ```javascript
 import Ember from 'ember';
 
-export default Ember.Controller.extend({
+export default Ember.Component.extend({
   value: 'test',
 
   froalaEditor: {
@@ -104,6 +105,86 @@ export default Ember.Controller.extend({
   },
 });
 ```
+**Create custom button**
+
+ - Template Example
+
+```hbs
+{{froala-editor params=froalaEditor.params  customButtons=froalaEditor.buttons}}
+```
+* Component example
+```javascript
+import Ember from 'ember';
+
+export default Ember.Component.extend({
+  value: 'test',
+
+  froalaEditor: {
+    params: {
+      toolbarInline: true,
+      placeholderText: 'Enter..',
+      toolbarButtons: ['my_dropdown','|', 'alert', 'clear', 'insert']
+        // For more params refer: 'https://www.froala.com/wysiwyg-editor/docs/options'
+    },
+    buttons:function(){
+			$.FroalaEditor.DefineIcon('alert', {NAME: 'info'});
+			    $.FroalaEditor.RegisterCommand('alert', {
+			      title: 'Hello',
+			      focus: false,
+			      undo: false,
+			      refreshAfterCallback: false,
+			      callback: function () {
+			        alert('Hello!');
+			      }
+			    });
+			    $.FroalaEditor.DefineIcon('clear', {NAME: 'remove'});
+			    $.FroalaEditor.RegisterCommand('clear', {
+			      title: 'Clear HTML',
+			      focus: false,
+			      undo: true,
+			      refreshAfterCallback: true,
+			      callback: function () {
+			        this.html.set('');
+			        this.events.focus();
+			      }
+			    });
+			    $.FroalaEditor.DefineIcon('insert', {NAME: 'plus'});
+			    $.FroalaEditor.RegisterCommand('insert', {
+			      title: 'Insert HTML',
+			      focus: true,
+			      undo: true,
+			      refreshAfterCallback: true,
+			      callback: function () {
+			        this.html.insert('My New HTML');
+			      }
+			    });
+			$.FroalaEditor.DefineIcon('my_dropdown', {NAME: 'cog'});
+	            $.FroalaEditor.RegisterCommand('my_dropdown', {
+	              title: 'Advanced options',
+	              type: 'dropdown',
+	              focus: false,
+	              undo: false,
+	              refreshAfterCallback: true,
+	              options: {
+	                'v1': 'Option 1',
+	                'v2': 'Option 2'
+	              },
+	              callback: function (cmd, val) {
+	                console.log (val);
+	              },
+	              // Callback on refresh.
+	              refresh: function ($btn) {
+	                console.log ('do refresh');
+	              },
+	              // Callback on dropdown show.
+	              refreshOnShow: function ($btn, $dropdown) {
+	                console.log ('do refresh when show');
+	              }
+	            });
+        }
+  }
+});
+```
 ### Please Note:
 The `value` is only for the initial value of the field.
 It will not be updated when the user changes the text.
@@ -123,9 +204,27 @@ var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 module.exports = function(defaults) {
   var app = new EmberApp(defaults, {
     // Add options here
+     emberFroala: {
+      fontAwesome: true,
+      theme: 'gray',
+      lang: 'en_us',
+      plugins: [
+        'block_styles',
+        'char_counter', 
+        'colors', 'entities',
+        'file_upload',
+        'font_family',
+        'font_size',
+        'fullscreen',
+        'inline_styles',
+        'lists',
+        'media_manager',
+        'tables',
+        'urls',
+        'video'
+      ]
+    }
   });
-  //include the lists plugin
-  app.import('bower_components/FroalaWysiwygEditor/js/plugins/lists.min.js');
 
   return app.toTree();
 };

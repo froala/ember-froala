@@ -49,7 +49,7 @@ export default Ember.Component.extend({
 {{froala-editor params=froalaEditor.params value=value focus=(action "focus") contentChanged=(action "contentChanged")}}
 ```
 **Mapping nested events**
-Nested events use camel case to trigger their respective Froala events.
+Nested events use underscores to trigger their respective Froala events.
 
  - Nested Event example for image.uploaded 
    (https://www.froala.com/wysiwyg-editor/docs/events#image.uploaded)
@@ -225,8 +225,6 @@ module.exports = function(defaults) {
       ]
     }
   });
-  //include the lists plugin
-  app.import('bower_components/FroalaWysiwygEditor/js/plugins/lists.min.js');
 
   return app.toTree();
 };

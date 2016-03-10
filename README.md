@@ -1,5 +1,7 @@
 # Ember-froala
 
+[![Join the chat at https://gitter.im/froala/ember-froala](https://badges.gitter.im/froala/ember-froala.svg)](https://gitter.im/froala/ember-froala?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 Ember component for FroalaWysiwygEditor.
 Fully customizable wysiwyg editor for emberjs. Create a new buttons and intergrate into your ember application. Post images images and html to your own server. 
 

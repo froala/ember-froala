@@ -1,6 +1,6 @@
 {
   "name": "ember-froala",
-  "version": "2.2.2",
+  "version": "2.2.3",
   "description": "Ember.js plugin for Froala WYSIWYG HTML rich text editor.",
   "authors": [
     "Maulik Bengali <maulik@ajackus.com>",
@@ -20,7 +20,7 @@
     "qunit": "~1.17.1"
   },
   "devDependencies": {
-    "froala-wysiwyg-editor": "2.2.2",
+    "froala-wysiwyg-editor": "2.2.3",
     "font-awesome": ">=4.4.0"
   },
   "keywords": [

@@ -2,7 +2,7 @@
 
 [![Join the chat at https://gitter.im/froala/ember-froala](https://badges.gitter.im/froala/ember-froala.svg)](https://gitter.im/froala/ember-froala?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-Ember component for FroalaWysiwygEditor.
+>Ember component for FroalaWysiwygEditor.
 Fully customizable wysiwyg editor for emberjs. Create a new buttons and intergrate into your ember application. Post images images and html to your own server. 
 
 ## Installation
@@ -15,6 +15,7 @@ Fully customizable wysiwyg editor for emberjs. Create a new buttons and intergra
 See [demo app source](https://github.com/ajackus/ember-froala/tree/master/tests/dummy/app) for example usage.
 
 * Component example
+
 ```javascript
 import Ember from 'ember';
 
@@ -50,21 +51,25 @@ export default Ember.Component.extend({
 ```hbs
 {{froala-editor params=froalaEditor.params value=value focus=(action "focus") contentChanged=(action "contentChanged")}}
 ```
+
 **Mapping nested events**
 Nested events use underscores to trigger their respective Froala events.
 
  - Nested Event example for image.uploaded 
    (https://www.froala.com/wysiwyg-editor/docs/events#image.uploaded)
+
 ```hbs
 {{froala-editor params=froalaEditor.params image_uploaded=(action "image_uploaded")}}
 ```
 
  - Nested Event example for imageManager.beforeDeleteImage
    (https://www.froala.com/wysiwyg-editor/docs/events#imageManager.beforeDeleteImage)
+
 ```hbs
 {{froala-editor params=froalaEditor.params imageManager_beforeDeleteImage=(action "imageManager_beforeDeleteImage")}}
 ```
-### Concepts:
+
+### Concepts
 **Save button**
 
  - Template Example
@@ -73,7 +78,9 @@ Nested events use underscores to trigger their respective Froala events.
 {{froala-editor params=froalaEditor.params value=value focus=(action "focus") contentChanged=(action "contentChanged")}}
 <button {{action 'save'}}>Save</button>
 ```
+
 * Component example
+
 ```javascript
 import Ember from 'ember';
 
@@ -107,6 +114,7 @@ export default Ember.Component.extend({
   },
 });
 ```
+
 **Create custom button**
 
  - Template Example
@@ -114,7 +122,9 @@ export default Ember.Component.extend({
 ```hbs
 {{froala-editor params=froalaEditor.params  customButtons=froalaEditor.buttons}}
 ```
+
 * Component example
+
 ```javascript
 import Ember from 'ember';
 
@@ -130,76 +140,76 @@ export default Ember.Component.extend({
     },
     buttons:function(){
 			$.FroalaEditor.DefineIcon('alert', {NAME: 'info'});
-			    $.FroalaEditor.RegisterCommand('alert', {
-			      title: 'Hello',
-			      focus: false,
-			      undo: false,
-			      refreshAfterCallback: false,
-			      callback: function () {
-			        alert('Hello!');
-			      }
-			    });
-			    $.FroalaEditor.DefineIcon('clear', {NAME: 'remove'});
-			    $.FroalaEditor.RegisterCommand('clear', {
-			      title: 'Clear HTML',
-			      focus: false,
-			      undo: true,
-			      refreshAfterCallback: true,
-			      callback: function () {
-			        this.html.set('');
-			        this.events.focus();
-			      }
-			    });
-			    $.FroalaEditor.DefineIcon('insert', {NAME: 'plus'});
-			    $.FroalaEditor.RegisterCommand('insert', {
-			      title: 'Insert HTML',
-			      focus: true,
-			      undo: true,
-			      refreshAfterCallback: true,
-			      callback: function () {
-			        this.html.insert('My New HTML');
-			      }
-			    });
-			$.FroalaEditor.DefineIcon('my_dropdown', {NAME: 'cog'});
-	            $.FroalaEditor.RegisterCommand('my_dropdown', {
-	              title: 'Advanced options',
-	              type: 'dropdown',
-	              focus: false,
-	              undo: false,
-	              refreshAfterCallback: true,
-	              options: {
-	                'v1': 'Option 1',
-	                'v2': 'Option 2'
-	              },
-	              callback: function (cmd, val) {
-	                console.log (val);
-	              },
-	              // Callback on refresh.
-	              refresh: function ($btn) {
-	                console.log ('do refresh');
-	              },
-	              // Callback on dropdown show.
-	              refreshOnShow: function ($btn, $dropdown) {
-	                console.log ('do refresh when show');
-	              }
-	            });
+      $.FroalaEditor.RegisterCommand('alert', {
+        title: 'Hello',
+        focus: false,
+        undo: false,
+        refreshAfterCallback: false,
+        callback: function () {
+          alert('Hello!');
         }
+      });
+      $.FroalaEditor.DefineIcon('clear', {NAME: 'remove'});
+      $.FroalaEditor.RegisterCommand('clear', {
+        title: 'Clear HTML',
+        focus: false,
+        undo: true,
+        refreshAfterCallback: true,
+        callback: function () {
+          this.html.set('');
+          this.events.focus();
+        }
+      });
+      $.FroalaEditor.DefineIcon('insert', {NAME: 'plus'});
+      $.FroalaEditor.RegisterCommand('insert', {
+        title: 'Insert HTML',
+        focus: true,
+        undo: true,
+        refreshAfterCallback: true,
+        callback: function () {
+          this.html.insert('My New HTML');
+        }
+      });
+      $.FroalaEditor.DefineIcon('my_dropdown', {NAME: 'cog'});
+      $.FroalaEditor.RegisterCommand('my_dropdown', {
+        title: 'Advanced options',
+        type: 'dropdown',
+        focus: false,
+        undo: false,
+        refreshAfterCallback: true,
+        options: {
+          'v1': 'Option 1',
+          'v2': 'Option 2'
+        },
+        callback: function (cmd, val) {
+          console.log (val);
+        },
+        // Callback on refresh.
+        refresh: function ($btn) {
+          console.log ('do refresh');
+        },
+        // Callback on dropdown show.
+        refreshOnShow: function ($btn, $dropdown) {
+          console.log ('do refresh when show');
+        }
+      });
+    }
   }
 });
 ```
-### Please Note:
+
+### Please Note
 The `value` is only for the initial value of the field.
 It will not be updated when the user changes the text.
 If the underlying value changes while the component is active, the editor will not reflect the change.
 In order to get the values that the user changes, you will need to listen to the
 `contentChanged` action.
 
-
 * Including a plugin example:
 
 Include the plugin in your ember-cli-build.js
 
-```
+```javascript
 /* global require, module */
 var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 

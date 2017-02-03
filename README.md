@@ -5,7 +5,7 @@
 >Ember component for FroalaWysiwygEditor.
 Fully customizable wysiwyg editor for emberjs. Create a new buttons and intergrate into your ember application. Post images images and html to your own server.
 
-## Addon Deprecated!!!
+## ADDON DEPRECATED!!!
 
 This addon has been deprecated in favor of [ember-froala-editor](https://github.com/froala/ember-froala-editor).
 

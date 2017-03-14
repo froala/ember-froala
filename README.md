@@ -3,7 +3,11 @@
 [![Join the chat at https://gitter.im/froala/ember-froala](https://badges.gitter.im/froala/ember-froala.svg)](https://gitter.im/froala/ember-froala?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 >Ember component for FroalaWysiwygEditor.
-Fully customizable wysiwyg editor for emberjs. Create a new buttons and intergrate into your ember application. Post images images and html to your own server. 
+Fully customizable wysiwyg editor for emberjs. Create a new buttons and intergrate into your ember application. Post images images and html to your own server.
+
+## ADDON DEPRECATED!!!
+
+This addon has been deprecated in favor of [ember-froala-editor](https://github.com/froala/ember-froala-editor).
 
 ## Installation
 
@@ -55,7 +59,7 @@ export default Ember.Component.extend({
 **Mapping nested events**
 Nested events use underscores to trigger their respective Froala events.
 
- - Nested Event example for image.uploaded 
+ - Nested Event example for image.uploaded
    (https://www.froala.com/wysiwyg-editor/docs/events#image.uploaded)
 
 ```hbs
@@ -222,7 +226,7 @@ module.exports = function(defaults) {
       lang: 'en_us',
       plugins: [
         'block_styles',
-        'char_counter', 
+        'char_counter',
         'colors', 'entities',
         'file_upload',
         'font_family',
